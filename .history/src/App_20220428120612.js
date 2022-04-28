@@ -1,14 +1,11 @@
 
-import Login from "./components/Login";
+
 function App() {
   return (
     <div className="App">
-         <Login />
+         hello from 3wa
     </div>
   );
 }
-
-
-
 
 export default App;
