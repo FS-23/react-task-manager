@@ -1,12 +1,15 @@
 
+
 .login-bg {
      background-image: linear-gradient(160deg , red , blue);
 }
+
 
 @font-face {
   font-family: "Poppins";
   src: url(./font/Poppins-Light.ttf);
 }
+
 
 *{
    font-family:  "Poppins" , sans-serif;

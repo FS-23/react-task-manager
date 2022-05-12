@@ -5,7 +5,7 @@ import TaskList from "./components/TaskList";
 
 function App() {
   return (
-    <div className="">
+    <div className="App">
       <div className="d-none"><Login/></div>
        <TaskList />  
 
