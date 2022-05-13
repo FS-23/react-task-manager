@@ -25,8 +25,6 @@ function TaskList(){
     async function getTasks(){
        let res =  await  getDocs(tasksRef)
        console.log('res:', res)
-       let list = res.docs.map( item => ({...item.data() , id: item.id}))
-       setTasks(list)
         // getDocs(tasksRef)
         //  .then(res => {
         //      console.log('result:', res)
@@ -39,7 +37,7 @@ function TaskList(){
 
     useEffect(()=>{
         getTasks()
-    },[])
+    })
     return (
         <div>
             <div className='row m-0'>

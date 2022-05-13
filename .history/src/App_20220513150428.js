@@ -6,7 +6,7 @@ import TaskDetail from "./components/TaskDetail";
 import Layout from "./components/Layout";
 import TaskLayout from "./components/TaskLayout";
 
-import { BrowserRouter , Routes , Route, Link } from 'react-router-dom'
+import { BrowserRouter , Routes , Route } from 'react-router-dom'
 
 
 function App() {
@@ -23,13 +23,10 @@ function App() {
                       <Route path=":id" element = {<TaskDetail/>}></Route>
                       <Route path="edit/:id" element = {<AddTask/>}></Route>
                    </Route>
+                   
               </Route>
               <Route path="*" element={
-                (<div className="text-secondary text-center display-6 mt-3">
-                  Ouuups ressource not found !!!!
-
-                  <Link to="/" className="btn btn-primary ms-2"> Home </Link>
-                </div>)
+                (<div className="text-secondary text-center display-6 mt-3">Ouuups ressource not found !!!!</div>)
               }></Route>
          </Routes>
           

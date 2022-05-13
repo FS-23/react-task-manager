@@ -22,7 +22,7 @@ function Login(){
         setTimeout(()=> {
            setLoading(false)
            navigate('/')
-        }, 1000)
+        }, 3000)
     }
      return(
          <>
@@ -41,7 +41,7 @@ function Login(){
                                     <div className='modal-body'>
                                     <form onSubmit={handleFormSubmit}>
                                             <div className="">
-                                                <label className="form-label">Email</label>
+                                                <label class="form-label">Email</label>
                                                 <input 
                                                     className="form-control" 
                                                     type="email"
@@ -49,7 +49,7 @@ function Login(){
                                                     placeholder="Email"/>
                                             </div>
                                             <div className="mt-4">
-                                            <label className="form-label">Password</label>
+                                            <label class="form-label">Password</label>
                                             <input 
                                                 className="form-control" 
                                                 type="password"

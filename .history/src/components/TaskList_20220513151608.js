@@ -6,9 +6,10 @@ function TaskList(){
 
     let tasksRef = collection(db , 'tasks')
     let [inputs , setInputs] = useState({})
-   
-
-    let [tasks ,  setTasks] = useState([])
+    let tasks = [
+         {id: 1 , title: "Learn react" , description: "Learn react with w3a"} , 
+         {id: 2 , title: 'Learn laravel' , description: "Learn laravel with Dodji" }
+    ]
 
     function handleOnChange(event){
         let name = event.target.name
@@ -22,24 +23,18 @@ function TaskList(){
         console.log('inputs:', inputs)
     }
 
-    async function getTasks(){
-       let res =  await  getDocs(tasksRef)
-       console.log('res:', res)
-       let list = res.docs.map( item => ({...item.data() , id: item.id}))
-       setTasks(list)
-        // getDocs(tasksRef)
-        //  .then(res => {
-        //      console.log('result:', res)
-        //      let list = res.docs.map( item => ({...item.data() , id: item.id}))
-        //      setTasks(list)
-        //      console.log('list:', list)
-        //  })
-        //  .catch(err => console.log('error:', err))
+    function getTasks(){
+        getDocs(tasksRef)
+         .then(res => {
+             let list = res.docs.map( item => ({...item.data() , id: item.id}))
+             console.log('list:', list)
+         })
+         .catch(err => console.log('error:', err))
     }
 
     useEffect(()=>{
         getTasks()
-    },[])
+    })
     return (
         <div>
             <div className='row m-0'>
@@ -52,8 +47,8 @@ function TaskList(){
                                        <button className='btn btn-outline-warning btn-sm'>{task.completed ? "Completed" : "In progress"}</button>
                                     </div>
                                     <div>{task.description}</div>
-                                    <div className='mt-3'>
-                                        <input  type="checkbox" checked={task.completed ? true : false}/>
+                                    <div>
+                                        <input  type="checkbox"/>
                                     </div>
                                 </div>
                             </div>

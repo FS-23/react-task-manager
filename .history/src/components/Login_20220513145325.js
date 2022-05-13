@@ -22,7 +22,7 @@ function Login(){
         setTimeout(()=> {
            setLoading(false)
            navigate('/')
-        }, 1000)
+        }, 3000)
     }
      return(
          <>

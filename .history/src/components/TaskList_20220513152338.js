@@ -22,24 +22,20 @@ function TaskList(){
         console.log('inputs:', inputs)
     }
 
-    async function getTasks(){
-       let res =  await  getDocs(tasksRef)
-       console.log('res:', res)
-       let list = res.docs.map( item => ({...item.data() , id: item.id}))
-       setTasks(list)
-        // getDocs(tasksRef)
-        //  .then(res => {
-        //      console.log('result:', res)
-        //      let list = res.docs.map( item => ({...item.data() , id: item.id}))
-        //      setTasks(list)
-        //      console.log('list:', list)
-        //  })
-        //  .catch(err => console.log('error:', err))
+    function getTasks(){
+        getDocs(tasksRef)
+         .then(res => {
+             console.log('result:', res)
+             let list = res.docs.map( item => ({...item.data() , id: item.id}))
+             setTasks(list)
+             console.log('list:', list)
+         })
+         .catch(err => console.log('error:', err))
     }
 
     useEffect(()=>{
         getTasks()
-    },[])
+    })
     return (
         <div>
             <div className='row m-0'>

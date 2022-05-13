@@ -28,7 +28,7 @@ function App() {
                 (<div className="text-secondary text-center display-6 mt-3">
                   Ouuups ressource not found !!!!
 
-                  <Link to="/" className="btn btn-primary ms-2"> Home </Link>
+                  <Link to="/" className="btn btn-primary"> Home </Link>
                 </div>)
               }></Route>
          </Routes>
