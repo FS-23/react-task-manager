@@ -15,9 +15,12 @@ function AddTask(){
     async function handleOnSubmit (event) {         
         event.preventDefault();         
         console.log(inputs)     
+
         inputs.completed = false
         let res = await addDoc(taskRef , inputs);
+
         console.log('res:', res)
+
         navigate('/tasks/list')
     }               
     return(

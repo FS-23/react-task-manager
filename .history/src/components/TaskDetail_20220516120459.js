@@ -1,14 +1,12 @@
-import { Link, useParams , useNavigate } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 
-import { collection , getDoc , doc , deleteDoc} from 'firebase/firestore'
+import { collection , getDoc , doc} from 'firebase/firestore'
 import { db } from "../firebase-config"
-import { useEffect, useState  } from "react"
+import { useEffect, useState } from "react"
 
 function TaskDetail(){
      let taskRef = collection(db, 'tasks')
      let params = useParams()
-
-     let navigate = useNavigate()
 
      let [task ,  setTask] = useState({})
 
@@ -24,14 +22,6 @@ function TaskDetail(){
            setTask({... result.data(), id: result.id})
      }
 
-     let onRemoveTask = async ()=>{
-        let docRef =  doc(taskRef , params.id)
-        let result = await deleteDoc(docRef)
-        console.log('result:', result)
-
-        if(result == undefined) navigate('/tasks')
-     }
-
      useEffect(()=>{
          getOneDoc(params.id)
      },[])
@@ -42,7 +32,7 @@ function TaskDetail(){
                <Link  className="btn btn-light btn-sm" to="/tasks/">List</Link>
                <div>
                    <button className="btn btn-primary">Edit</button>
-                   <button className="btn btn-danger ms-3" onClick={onRemoveTask}>Remove</button>
+                   <button className="btn btn-danger ms-3">Remove</button>
                </div>
             </div>
         </div>

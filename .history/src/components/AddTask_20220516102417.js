@@ -1,7 +1,7 @@
 import { useState } from "react";  
 import { Link } from 'react-router-dom'
 import { db } from '../firebase-config'
-import { collection , addDoc  } from 'firebase/firestore'
+import { collection , addDoc } from 'firebase/firestore'
 import { useNavigate } from 'react-router-dom'
 function AddTask(){      
     let taskRef = collection(db , 'tasks')
@@ -15,9 +15,12 @@ function AddTask(){
     async function handleOnSubmit (event) {         
         event.preventDefault();         
         console.log(inputs)     
+
         inputs.completed = false
         let res = await addDoc(taskRef , inputs);
+
         console.log('res:', res)
+
         navigate('/tasks/list')
     }               
     return(
@@ -37,6 +40,7 @@ function AddTask(){
                    <textarea className="form-control" type = "text" name="description" required onChange = {handleOnChange}></textarea>
 
                </div>
+
                <div className="form-group mt-2">
                    <label className="form-label">TaskPriority</label>
                    <select className="form-control" name = "priority" required onChange = {handleOnChange}>
@@ -45,7 +49,9 @@ function AddTask(){
                        <option value= "medium">medium</option>
                        <option value= "high">high</option>
                    </select>
+
                </div>
+
                <div className="mt-4">
                    <button className="btn btn-primary">Save</button>
                    <Link to="/tasks/list" className="btn btn-danger ms-3">Cancle</Link>

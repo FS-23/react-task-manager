@@ -58,12 +58,9 @@ function TaskList(){
                                     </div>
                                     <div>{task.description}</div>
                                     <div className='mt-3 d-flex justify-content-between'>
+                                        <input onChange={(event)=>{updateCompleted(task.id , task.completed)}}  type="checkbox" checked={task.completed ? true : false}/>
                                         <Link className='btn btn-outline-primary ms-2 btn-sm' 
                                               to={"/tasks/"+task.id}>Show more</Link>
-
-                                        <input onChange={(event)=>{updateCompleted(task.id , task.completed)}}  
-                                               type="checkbox" checked={task.completed ? true : false}/>
-                                        
                                     </div>
                                 </div>
                             </div>

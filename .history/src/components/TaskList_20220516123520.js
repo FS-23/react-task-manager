@@ -51,19 +51,16 @@ function TaskList(){
                     {
                         tasks.map( (task , index) => (
                             <div key={index} className="mt-3 col-12 col-sm-6 col-lg-3 col-xl-4">
-                                <div className='bg-light p-2 h-100'>
+                                <div className='bg-light p-2'>
                                     <div className='d-flex mb-2 justify-content-between align-items-center'>
                                        <h4>{task.title} </h4>
                                        <button className={task.completed ? 'btn btn-outline-success btn-sm' : 'btn btn-outline-warning btn-sm'}>{task.completed ? "Completed" : "In progress"}</button>
                                     </div>
                                     <div>{task.description}</div>
-                                    <div className='mt-3 d-flex justify-content-between'>
+                                    <div className='mt-3'>
+                                        <input onChange={(event)=>{updateCompleted(task.id , task.completed)}}  type="checkbox" checked={task.completed ? true : false}/>
                                         <Link className='btn btn-outline-primary ms-2 btn-sm' 
                                               to={"/tasks/"+task.id}>Show more</Link>
-
-                                        <input onChange={(event)=>{updateCompleted(task.id , task.completed)}}  
-                                               type="checkbox" checked={task.completed ? true : false}/>
-                                        
                                     </div>
                                 </div>
                             </div>

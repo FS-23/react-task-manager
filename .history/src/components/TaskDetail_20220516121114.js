@@ -1,4 +1,4 @@
-import { Link, useParams , useNavigate } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 
 import { collection , getDoc , doc , deleteDoc} from 'firebase/firestore'
 import { db } from "../firebase-config"
@@ -7,8 +7,6 @@ import { useEffect, useState  } from "react"
 function TaskDetail(){
      let taskRef = collection(db, 'tasks')
      let params = useParams()
-
-     let navigate = useNavigate()
 
      let [task ,  setTask] = useState({})
 
@@ -28,8 +26,6 @@ function TaskDetail(){
         let docRef =  doc(taskRef , params.id)
         let result = await deleteDoc(docRef)
         console.log('result:', result)
-
-        if(result == undefined) navigate('/tasks')
      }
 
      useEffect(()=>{

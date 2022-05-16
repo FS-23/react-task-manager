@@ -1,7 +1,7 @@
 import { useState } from "react";  
 import { Link } from 'react-router-dom'
 import { db } from '../firebase-config'
-import { collection , addDoc  } from 'firebase/firestore'
+import { collection , addDoc } from 'firebase/firestore'
 import { useNavigate } from 'react-router-dom'
 function AddTask(){      
     let taskRef = collection(db , 'tasks')
@@ -15,9 +15,12 @@ function AddTask(){
     async function handleOnSubmit (event) {         
         event.preventDefault();         
         console.log(inputs)     
+
         inputs.completed = false
         let res = await addDoc(taskRef , inputs);
+
         console.log('res:', res)
+
         navigate('/tasks/list')
     }               
     return(
