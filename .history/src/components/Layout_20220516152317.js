@@ -6,7 +6,9 @@ import { useNavigate } from 'react-router-dom'
 
 function Layout(){
     let navigate = useNavigate()
-   
+    onAuthStateChanged(auth , (currentUser)=>{
+        console.log('currentUser:', currentUser)
+    })
     async function logOut(){
          try{
 

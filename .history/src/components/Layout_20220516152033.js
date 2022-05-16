@@ -1,12 +1,11 @@
 import { Link, Outlet } from "react-router-dom";
 import { auth } from '../firebase-config'
-import { signOut , onAuthStateChanged  } from 'firebase/auth'
+import { signOut  } from 'firebase/auth'
 
 import { useNavigate } from 'react-router-dom'
 
 function Layout(){
     let navigate = useNavigate()
-   
     async function logOut(){
          try{
 

@@ -37,14 +37,12 @@ function TaskDetail(){
      },[])
      return (
         <div className="w-50 shadow-lg m-auto p-3">
-             <div className='d-flex mb-2  align-items-center'>
-                <h4 className="me-2">{task.title} </h4>
-                <button className={task.completed ? 'btn btn-outline-success btn-sm' : 'btn btn-outline-warning btn-sm'}>{task.completed ? "Completed" : "In progress"}</button>
-            </div>
+            <h2>{task.title}</h2>
             <p>{task.description}</p>
             <div className="d-flex justify-content-between">
                <Link  className="btn btn-light btn-sm" to="/tasks/">List</Link>
                <div>
+                   <button className="btn btn-primary">Edit</button>
                    <button className="btn btn-danger ms-3" onClick={onRemoveTask}>Remove</button>
                </div>
             </div>

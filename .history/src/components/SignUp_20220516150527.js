@@ -1,13 +1,13 @@
 import { useState } from 'react'
-import { useNavigate , Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { auth } from '../firebase-config'
-import { signInWithEmailAndPassword} from 'firebase/auth'
-function Login(){
+import { createUserWithEmailAndPassword} from 'firebase/auth'
+function SignUp(){
     let [email , setEmail]= useState('')
     let [password , setPassword]= useState('')
     let [loading , setLoading]= useState(false)
 
-   
+    console.log('auth:', auth)
 
     let navigate = useNavigate()
 
@@ -25,15 +25,12 @@ function Login(){
         setLoading(true)
 
         try{
-        
-            let response = await signInWithEmailAndPassword(auth , email , password)
-            console.log('response:', response)
 
-            if(response) navigate('/')
+           let response = await createUserWithEmailAndPassword(auth , email , password)
+           console.log('response:', response)
 
         }catch(err){
-           console.log('error:', err.message , err.code)
-           alert('error:'+err.code)
+              console.log('error:', err.message)
         }
         // setTimeout(()=> {
         //    setLoading(false)
@@ -52,7 +49,7 @@ function Login(){
                                <div className='modal-content'>
                                     <div className='modal-header'>
                                         <h2 className='modal-title'>Connexion</h2>
-                                        <Link to="/signup" href='#'>S'enregistrer</Link>
+                                        <a href='#'>S'enregistrer</a>
                                     </div>
                                     <div className='modal-body'>
                                     <form onSubmit={handleFormSubmit}>
@@ -87,7 +84,7 @@ function Login(){
      )
 }
 
-export default Login
+export default SignUp
 
 
 

@@ -7,7 +7,7 @@ function Login(){
     let [password , setPassword]= useState('')
     let [loading , setLoading]= useState(false)
 
-   
+    console.log('auth:', auth)
 
     let navigate = useNavigate()
 

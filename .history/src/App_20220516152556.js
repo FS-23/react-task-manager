@@ -8,17 +8,12 @@ import TaskLayout from "./components/TaskLayout";
 import SignUp from "./components/SignUp";
 import { onAuthStateChanged  } from 'firebase/auth';
 
-import  { auth } from './firebase-config'
-
-import { BrowserRouter , Routes , Route, Link, Navigate } from 'react-router-dom'
+import { BrowserRouter , Routes , Route, Link } from 'react-router-dom'
 
 
 function App() {
   onAuthStateChanged(auth , currenUser => {
         console.log('currentUser', currenUser)
-
-        if(currenUser == null) navigate('/login')
-        else(currenUser ) navigate('/')
   })
   return (
 

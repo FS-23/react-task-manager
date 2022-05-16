@@ -7,7 +7,7 @@ function Login(){
     let [password , setPassword]= useState('')
     let [loading , setLoading]= useState(false)
 
-   
+    console.log('auth:', auth)
 
     let navigate = useNavigate()
 
@@ -19,22 +19,12 @@ function Login(){
         setPassword(event.target.value)
     }
 
-    async function handleFormSubmit(event){
+    function handleFormSubmit(event){
         event.preventDefault()
         console.log('form infos', {email , password})
         setLoading(true)
 
-        try{
-        
-            let response = await signInWithEmailAndPassword(auth , email , password)
-            console.log('response:', response)
-
-            if(response) navigate('/')
-
-        }catch(err){
-           console.log('error:', err.message , err.code)
-           alert('error:'+err.code)
-        }
+        signInWithEmailAndPassword(auth , email , password)
         // setTimeout(()=> {
         //    setLoading(false)
         //    navigate('/')

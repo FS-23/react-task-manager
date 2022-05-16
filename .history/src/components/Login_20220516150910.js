@@ -7,7 +7,7 @@ function Login(){
     let [password , setPassword]= useState('')
     let [loading , setLoading]= useState(false)
 
-   
+    console.log('auth:', auth)
 
     let navigate = useNavigate()
 
@@ -27,13 +27,11 @@ function Login(){
         try{
         
             let response = await signInWithEmailAndPassword(auth , email , password)
+
             console.log('response:', response)
 
-            if(response) navigate('/')
-
         }catch(err){
-           console.log('error:', err.message , err.code)
-           alert('error:'+err.code)
+           console.log('error:', error.message , error.code)
         }
         // setTimeout(()=> {
         //    setLoading(false)
