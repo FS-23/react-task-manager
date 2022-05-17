@@ -6,6 +6,7 @@ function SignUp(){
     let [password , setPassword]= useState('')
     let [loading , setLoading]= useState(false)
 
+    console.log('auth:', auth)
 
     let navigate = useNavigate()
 
@@ -26,9 +27,6 @@ function SignUp(){
 
            let response = await signUserUp( email , password)
            console.log('response:', response)
-
-           if(response.success) navigate('/')
-           else alert('sign up error:'+ response.data)
 
         }catch(err){
               console.log('error:', err.message)

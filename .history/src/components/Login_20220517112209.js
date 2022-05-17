@@ -1,11 +1,15 @@
 import { useState } from 'react'
-import { useNavigate , Link} from 'react-router-dom'
-import  { signUserUp } from '../modules/auth'
-function SignUp(){
+import { useNavigate , Link } from 'react-router-dom'
+import { auth } from '../firebase-config'
+import { signInWithEmailAndPassword} from 'firebase/auth'
+
+import { signUserIn } from '../modules/auth'
+function Login(){
     let [email , setEmail]= useState('')
     let [password , setPassword]= useState('')
     let [loading , setLoading]= useState(false)
 
+   
 
     let navigate = useNavigate()
 
@@ -23,15 +27,17 @@ function SignUp(){
         setLoading(true)
 
         try{
+        
+            let response = await signUserIn(email , password)
+            console.log('response:', response)
 
-           let response = await signUserUp( email , password)
-           console.log('response:', response)
-
-           if(response.success) navigate('/')
-           else alert('sign up error:'+ response.data)
+            
+            if(response.success) navigate('/')
+            else alert('login error:' + response.data)
 
         }catch(err){
-              console.log('error:', err.message)
+           console.log('error:', err.message , err.code)
+           alert('error:'+err.code)
         }
         // setTimeout(()=> {
         //    setLoading(false)
@@ -50,7 +56,7 @@ function SignUp(){
                                <div className='modal-content'>
                                     <div className='modal-header'>
                                         <h2 className='modal-title'>Connexion</h2>
-                                        <Link to="/login" href='#'>Se connecter</Link>
+                                        <Link to="/signup" href='#'>S'enregistrer</Link>
                                     </div>
                                     <div className='modal-body'>
                                     <form onSubmit={handleFormSubmit}>
@@ -71,7 +77,7 @@ function SignUp(){
                                                 placeholder="password"/>
                                             </div>
                                             <button className="btn btn-primary mt-4">
-                                                Creer le compte
+                                                Connecter
                                                 {loading ? <div className='spinner-border ms-1 spinner-border-sm'></div>: ''}
                                             </button>
                                             
@@ -85,7 +91,7 @@ function SignUp(){
      )
 }
 
-export default SignUp
+export default Login
 
 
 

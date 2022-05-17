@@ -5,7 +5,7 @@ import { createUserWithEmailAndPassword , signInWithEmailAndPassword , signOut }
 export async  function signUserUp(email , password){
     try{
 
-        let response =  await createUserWithEmailAndPassword(auth , email , password)
+        let response =  await createUserWithEmailAndPassword(auth , email , password).then(...arguments.).catch(...arguments.)
         
         return { success: true , data: response}
 
@@ -18,7 +18,7 @@ export async  function signUserUp(email , password){
 export async  function signUserIn(email , password){
     try{
 
-        let response =  await signInWithEmailAndPassword(auth , email , password)
+        let response =  await signInWithEmailAndPassword(auth , email , password).then(...arguments.).catch(...arguments.)
         
         return { success: true , data: response}
 

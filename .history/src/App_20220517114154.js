@@ -39,8 +39,8 @@ function App() {
                 </Route>
                 <Route path="*" element={
                   (<div className="text-secondary text-center display-6 mt-3">
-                     Ouuups ressource not found !!!!
-                     <Link to="/" className="btn btn-primary ms-2"> Home </Link>
+                    Ouuups ressource not found !!!!
+                    <Link to="/" className="btn btn-primary ms-2"> Home </Link>
                   </div>)
                 }></Route>
           </Routes>
